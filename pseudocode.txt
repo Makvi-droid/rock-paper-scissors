@@ -10,3 +10,32 @@ Get a random Computer choice{
     Scissors
 }
 
+Play a round:
+Get Computer choice and Player choice{
+    if Computer choice = rock
+    and Player choice = rock
+    then print its a draw
+
+    if Computer choice = rock
+    and Player choice = paper
+    then print you win
+
+    if Computer choice = rock
+    and Player choice = scissors
+    then print you lose
+
+    if Computer choice = paper
+    and Player choice = paper
+    then print its a draw
+
+    if Computer choice = paper
+    and Player choice = rock
+    then print you lose
+
+    if Computer choice = paper
+    and Player choice = scissors
+    then print you win
+
+    etc.
+}
+

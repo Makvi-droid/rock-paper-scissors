@@ -4,4 +4,16 @@ function computerChoice() {
     return choices[randomChoices].toUpperCase();
 }
 
-console.log(computerChoice());
+function round(playerSelection, computerSelection){
+   if(playerSelection != computerSelection){
+        return "you lose";
+    }
+    else{
+        return "you win";
+    }
+}
+
+const computerSelection = (computerChoice());
+const playerSelection = prompt.toUpperCase();
+
+console.log(round(playerSelection, computerSelection));

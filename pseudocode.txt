@@ -1,0 +1,12 @@
+Main problem:
+-Make a program that lets a person play rock-paper-scissors with a computer
+5 times.
+
+Computer Choice:
+Get a random Computer choice{
+    Computer choices:
+    Rock
+    Paper
+    Scissors
+}
+

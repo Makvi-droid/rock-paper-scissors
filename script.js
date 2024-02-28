@@ -1,4 +1,4 @@
-/*function computerChoice() {
+function computerChoice() {
     let choices = ['rock', 'paper', 'scissors'];
     let randomChoices = Math.floor(Math.random() * choices.length);
     return choices[randomChoices].toUpperCase();
@@ -62,15 +62,9 @@ function playGame(){
 }
 
 playGame();
-*/
 
-const btnRock = document.querySelector("#rock"); 
-const btnPaper = document.querySelector("#paper"); 
-const btnScissors = document.querySelector("#scissors"); 
 
-btnRock.addEventListener('click', function(){
-    alert("rock");
-});
+
 
 
 

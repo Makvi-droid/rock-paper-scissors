@@ -6,17 +6,9 @@ const computerPick = document.getElementById("computerChoice");
 const displayWinner = document.getElementById("displayWinner");
 
 function computerChoice() {
-    let choices = [btnRock, btnPaper, btnScissors];
+    let choices = ["rock", "paper", "scissors"];
     let randomChoices = Math.floor(Math.random() * choices.length);
-    return choices[randomChoices].id;
-}
-
-function playGame(){
-
-    for(let i = 1; i <=5; i++){
-        
-    }
-
+    return choices[randomChoices];
 }
 
 function playRound(playerSelection, computerSelection){
@@ -60,20 +52,23 @@ function playRound(playerSelection, computerSelection){
 
 btnRock.addEventListener('click', function(){
     playerPick.textContent = "Player picked Rock";
-    computerPick.textContent = "Computer picked " + computerChoice();
-    playRound(btnRock, computerChoice());
+    const computerSelection = computerChoice();
+    computerPick.textContent = "Computer picked " + computerSelection;
+    playRound(btnRock, computerSelection);
 });
 
 btnPaper.addEventListener('click', function(){
     playerPick.textContent = "Player picked Paper";
-    computerPick.textContent = "Computer picked " + computerChoice();
-    playRound(btnPaper, computerChoice());
+    const computerSelection = computerChoice();
+    computerPick.textContent = "Computer picked " + computerSelection;
+    playRound(btnPaper, computerSelection);
  });
 
  btnScissors.addEventListener('click', function(){
     playerPick.textContent = "Player picked Scissors";
-    computerPick.textContent = "Computer picked " + computerChoice();
-    playRound(btnScissors, computerChoice());
+    const computerSelection = computerChoice();
+    computerPick.textContent = "Computer picked " + computerSelection;
+    playRound(btnScissors, computerSelection);
  });
 
 

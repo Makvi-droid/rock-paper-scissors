@@ -11,6 +11,14 @@ function computerChoice() {
     return choices[randomChoices].id;
 }
 
+function playGame(){
+
+    for(let i = 1; i <=5; i++){
+        
+    }
+
+}
+
 function playRound(playerSelection, computerSelection){
     switch(playerSelection.id){
  

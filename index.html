@@ -12,12 +12,27 @@
 <body>
 
     <style>
-        button{
+
+        *{
             font-family: "Quicksand";
-            font-size: 30px;
-            cursor: pointer;
+        }
+
+        body{
             margin: 10px;
         }
+
+        button{
+            font-size: 30px;
+            cursor: pointer;
+        }
+
+        div{
+            position: relative;
+            top: 10px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
     </style>
 
 
@@ -25,6 +40,8 @@
     <button id="paper">PAPER</button>
     <button id="scissors">SCISSORS</button>
 
+    <div id="playerPick"></div>
+    <div id="computerChoice"></div>
     <div id="displayWinner"></div>
 
     

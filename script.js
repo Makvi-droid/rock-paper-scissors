@@ -64,9 +64,14 @@ function playGame(){
 playGame();
 */
 
-const btnRock = document.getElementById("#rock"); 
-const btnPaper = document.getElementById("#paper"); 
-const btnScissors = document.getElementById("scissors"); 
+const btnRock = document.querySelector("#rock"); 
+const btnPaper = document.querySelector("#paper"); 
+const btnScissors = document.querySelector("#scissors"); 
+
+btnRock.addEventListener('click', function(){
+    alert("rock");
+});
+
 
 
     

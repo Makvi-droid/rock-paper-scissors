@@ -5,71 +5,138 @@ const playerPick = document.getElementById('playerPick');
 const computerChoice = document.getElementById('computerChoice');
 const displayWinner = document.getElementById('displayWinner');
 const roundWinner = document.getElementById('roundWinner');
+const overallWinner = document.getElementById('overallWinner');
 
 const choices = ["rock", "paper", "scissors"];
+let playerScore = 0;
+let computerScore = 0;
+let roundCount = 0;
 
-function computerPick(){
+function computerPick() {
     return choices[Math.floor(Math.random() * 3)];
 }
 
-function playRound(player, computer){
-    switch(player){
+function playRound(player, computer) {
+    switch (player) {
         case "rock":
-            switch(computer){
+            switch (computer) {
                 case "rock":
-                    return displayWinner.textContent = "IT'S A TIE";
+                    return "IT'S A TIE";
                 case "paper":
-                    return displayWinner.textContent = "YOU LOSE";
+                    computerScore++;
+                    return "YOU LOSE";
                 case "scissors":
-                    return displayWinner.textContent = "YOU WIN";
+                    playerScore++;
+                    return "YOU WIN";
             }
             break;
-        
+
         case "paper":
-            switch(computer){
+            switch (computer) {
                 case "rock":
-                    return displayWinner.textContent = "YOU WIN";
+                    playerScore++;
+                    return "YOU WIN";
                 case "paper":
-                    return displayWinner.textContent = "IT'S A TIE";
+                    return "IT'S A TIE";
                 case "scissors":
-                    return displayWinner.textContent = "YOU LOSE";
+                    computerScore++;
+                    return "YOU LOSE";
             }
             break;
 
         case "scissors":
-            switch(computer){
+            switch (computer) {
                 case "rock":
-                    return displayWinner.textContent = "YOU LOSE";
+                    computerScore++;
+                    return "YOU LOSE";
                 case "paper":
-                    return displayWinner.textContent = "YOU WIN";
+                    playerScore++;
+                    return "YOU WIN";
                 case "scissors":
-                    return displayWinner.textContent = "IT'S A TIE";
+                    return "IT'S A TIE";
             }
             break;
-
     }
 }
 
-btnRock.addEventListener('click', function(){
-    playerPick.textContent = "Player picked rock";
-    computerChoice.textContent = "Compuer picked " + computerPick();
+function updateScores() {
+    roundWinner.textContent = `Round ${roundCount} - Player: ${playerScore} Computer: ${computerScore}`;
+}
+
+function checkOverallWinner() {
+    if (playerScore >= 3) {
+        overallWinner.textContent = "Overall Winner: Player";
+        resetGame();
+    } else if (computerScore >= 3) {
+        overallWinner.textContent = "Overall Winner: Computer";
+        resetGame();
+    }
+}
+
+function resetGame() {
+    playerScore = 0;
+    computerScore = 0;
+    roundCount = 0;
+    btnRock.disabled = false;
+    btnPaper.disabled = false;
+    btnScissors.disabled = false;
+}
+
+function endGame() {
+    btnRock.disabled = true;
+    btnPaper.disabled = true;
+    btnScissors.disabled = true;
+    displayWinner.textContent = "";
+    if (playerScore > computerScore) {
+        overallWinner.textContent = "Overall Winner: Player";
+    } else if (computerScore > playerScore) {
+        overallWinner.textContent = "Overall Winner: Computer";
+    } else {
+        overallWinner.textContent = "Overall Winner: It's a tie!";
+    }
+}
+
+btnRock.addEventListener('click', function () {
     const playerSelect = "rock";
     const computerSelect = computerPick();
-    playRound(playerSelect, computerSelect);
+    playerPick.textContent = "Player picked rock";
+    computerChoice.textContent = "Computer picked " + computerSelect;
+    const result = playRound(playerSelect, computerSelect);
+    displayWinner.textContent = result;
+    roundCount++;
+    updateScores();
+    checkOverallWinner();
+    if (roundCount === 5) {
+        endGame();
+    }
 });
 
-btnPaper.addEventListener('click', function(){
-    playerPick.textContent = "Player picked paper";
-    computerChoice.textContent = "Compuer picked " + computerPick();
+btnPaper.addEventListener('click', function () {
     const playerSelect = "paper";
     const computerSelect = computerPick();
-    playRound(playerSelect, computerSelect);
+    playerPick.textContent = "Player picked paper";
+    computerChoice.textContent = "Computer picked " + computerSelect;
+    const result = playRound(playerSelect, computerSelect);
+    displayWinner.textContent = result;
+    roundCount++;
+    updateScores();
+    checkOverallWinner();
+    if (roundCount === 5) {
+        endGame();
+    }
 });
 
-btnScissors.addEventListener('click', function(){
-    playerPick.textContent = "Player picked scissors";
-    computerChoice.textContent = "Compuer picked " + computerPick();
+btnScissors.addEventListener('click', function () {
     const playerSelect = "scissors";
     const computerSelect = computerPick();
-    playRound(playerSelect, computerSelect);
+    playerPick.textContent = "Player picked scissors";
+    computerChoice.textContent = "Computer picked " + computerSelect;
+    const result = playRound(playerSelect, computerSelect);
+    displayWinner.textContent = result;
+    roundCount++;
+    updateScores();
+    checkOverallWinner();
+    if (roundCount === 5) {
+        endGame();
+    }
 });
